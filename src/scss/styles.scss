@@ -1,0 +1,310 @@
+@import "./partials/mixins";
+@import "./partials/colors";
+@import "./partials/animations";
+
+//sections
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+
+  a {
+    text-decoration: none;
+  }
+}
+// flex containers
+body,
+header,
+.left-container,
+.right-container,
+.social-icons,
+.download-buttons {
+  display: flex;
+}
+
+header,
+.left-container,
+.download-buttons {
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  margin: 0px;
+  background-color: $dark_white;
+}
+// Header
+
+header {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+
+  .left-container {
+    height: 100%;
+    justify-content: center;
+    align-content: space-between;
+    padding: 10px 10px 70px;
+    @include animation(fade-in 1.2s forwards);
+
+
+    #logo {
+      width: calc(400px * .50);
+      height: calc(110px * .50);
+      background-image: url('../images/fl_logo_mobile.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .tagline {
+      max-width: 420px;
+      margin-left: 20px;
+      margin-right: 20px;
+      h1 {
+        // font-weight: bold;
+        font-size: 1.8em;
+        letter-spacing: 1px;
+        color: $dark_blue;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-shadow: -1px 1px 3px rgba(0, 0, 0, 0.2)
+      }
+    }
+
+    .learn-more {
+      opacity: 0;
+      width: calc(200px * .5);
+      height: calc(60px * .5);
+      line-height: calc(60px * .5);
+      border: 2px solid $light_blue;
+      border-radius: 5px;
+      color: $light_blue;
+      text-decoration: none;
+      text-align: center;
+      font-size: 1em;
+      @include animation(fade-in .7s 3s forwards);
+      transition: ease-in .2s;
+      &:hover {
+        background-color: $light_blue;
+        color: $white;
+        border-color: $dark_blue;
+        box-shadow: -3px 4px 5px 0px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+  }
+  .right-container {
+    display: none;
+  }
+}
+
+// social icons
+.social-icons {
+  position: absolute;
+  bottom: -150px;
+  left: calc(50% - (220px * .75 / 2));
+  width: calc(220px * .75);
+  flex-direction: row;
+  align-content: space-between;
+  flex: 1;
+  @include animation(social-icon-slide-up .6s .8s forwards);
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  a {
+    margin: auto;
+    .icon {
+      width: calc(60px * .75);
+      height: calc(60px * .75);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: 100%;
+      box-shadow: -3px 4px 5px 0px rgba(0, 0, 0, 0.2);
+      transition: linear .2s;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &.facebook {
+      }
+      &.twitter {
+      }
+      &.mail {
+      }
+    }
+  }
+}
+// Download buttons
+.download-buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .button {
+    width: calc(300px * .50);
+    height: calc(85px * .50);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: -3px 4px 5px 0px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    &.ios {
+      background-image: url('../images/ios_download.png');
+    }
+    &.gp {
+      background-image: url('../images/gp_download.png');
+    }
+  }
+}
+
+//Landscape handheld devices
+/* Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 740px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+
+  header {
+    .left-container {
+      padding: 0px;
+    }
+  }
+
+  .social-icons {
+    left: auto;
+    right: 10px!important;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+  header {
+    background-image: url('../images/mobile_background.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
+  }
+}
+
+// Bigger Screens
+
+@media screen and (min-width: 960px){
+
+    html {
+      font-size: 16px;
+    }
+    header {
+      flex-direction: row;
+      flex: 1;
+      padding-left: 20px;
+      padding-right: 60px;
+
+      .left-container {
+        flex-basis: 65%;
+        padding: 0px;
+        #logo {
+          background-image: url('../images/fl_logo_desktop.png');
+          width: 400px;
+          height: 110px;
+        }
+
+        .tagline {
+          h1 {
+            color: $light_blue;
+            font-size: 2.2em;
+          }
+        }
+
+        .learn-more {
+          width: 200px;
+          height: 60px;
+          line-height: 60px;
+          font-size: 1.5em;
+        }
+      }
+      .right-container {
+        display: flex;
+        width: 100%;
+        flex-basis: 35%;
+        // background-color: red;
+
+        .iphone-display {
+          img {
+            position: absolute;
+            opacity: 0;
+            top: calc(50% - 75vh);
+            right: 0px;
+            @include animation(slide-down .6s .8s forwards);
+          }
+        }
+      }
+
+    }
+
+    // Download buttons
+    .download-buttons {
+      flex-direction: row;
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      .button {
+        width: calc(300px * .7);
+        height: calc(85px * .7);
+        border-radius: 10px;
+        // margin: 5px;
+      }
+    }
+
+    /// social icons
+    .social-icons {
+      flex-direction: column;
+      right: 60px;
+      left: auto;
+      bottom: auto;
+      height: 200px;
+      top: calc(50% - (200px / 2));
+      width: auto;
+      .icon {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        right: -200px;
+        bottom: auto;
+        @include animation(social-icon-slide-in-right .5s forwards);
+        &.facebook {
+          animation-delay: 1.5s;
+        }
+        &.twitter {
+          animation-delay: 1.55s;
+        }
+        &.mail {
+          animation-delay: 1.6s;
+        }
+      }
+    }
+
+}
+
+
+@media screen and (min-width: 1080px){
+
+  header {
+    .left-container {
+      .tagline {
+        max-width: 100%;
+
+        h1 {
+          font-size: 3em;
+        }
+      }
+    }
+  }
+}

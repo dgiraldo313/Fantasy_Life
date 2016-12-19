@@ -1,0 +1,33 @@
+{
+  "name": "fantasy_life",
+  "version": "1.0.0",
+  "description": "Landing page for Fantasy Life, the sports mobile app company!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Mobile",
+    "App",
+    "Sports",
+    "IOS",
+    "Android",
+    "Fantasy",
+    "Life"
+  ],
+  "author": "Daniel Giraldo",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "jquery": "^3.1.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
