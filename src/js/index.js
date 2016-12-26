@@ -59,12 +59,29 @@ function animateReviews() {
 
 }
 
+function animateFeatures() {
+  //get a list of all review elements
+  let $features = $('#features .content .features-container').children();
+
+  //Go through all of the review elements and activate animations
+  $features.map(function () {
+    let $feature = $(this);
+
+    //activate animation when review section is in view
+    if (isInViewport($feature)) {
+      //add fadeUp class, which triggers animation
+      $feature.addClass('animate');
+    }
+  });
+}
+
 function init() {
   //activate smooth scroll for all # links
   smoothScroll();
   // activate onScroll animations
   $(window).scroll(function () {
     animateReviews();
+    animateFeatures();
   });
 }
 
