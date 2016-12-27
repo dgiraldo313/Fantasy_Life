@@ -19,22 +19,42 @@ header,
 .left-container,
 .right-container,
 .social-icons,
-.download-buttons {
+.download-buttons,
+main,
+section,
+.review-container,
+.review,
+.feature-container,
+.feature {
   display: flex;
+}
+
+body,
+header,
+.left-container,
+.download-buttons,
+main,
+section,
+.review-container,
+.review,
+.feature-container,
+.feature
+ {
+  flex-direction: column;
+
 }
 
 header,
 .left-container,
 .download-buttons {
-  flex-direction: column;
   align-items: center;
 }
 
 body {
   margin: 0px;
   // background-color: $dark_white;
-  max-width: 1245px;
-  margin: auto;
+  // max-width: 1245px;
+  // margin: auto;
 }
 // Header
 
@@ -43,10 +63,6 @@ header {
   min-height: 100vh;
   width: 100%;
   margin: auto;
-  // margin-left: auto;
-  // margin-right: auto;
-  overflow: hidden;
-
   .left-container {
     // height: 100%;
     justify-content: center;
@@ -80,18 +96,18 @@ header {
     }
 
     .learn-more {
-      opacity: 0;
+      @include opacity(0);
       width: calc(200px * .5);
       height: calc(60px * .5);
       line-height: calc(60px * .5);
       border: 2px solid $dark_blue;
-      border-radius: 5px;
+      @include border-radius();
       color: $dark_blue;
       text-decoration: none;
       text-align: center;
       font-size: 1em;
       @include animation(fade-in .7s 3s forwards);
-      transition: ease-in .2s;
+      @include transition(ease-in .2s);
       &:hover {
         background-color: $dark_blue;
         color: $white;
@@ -106,9 +122,190 @@ header {
   }
 }
 
+main {
+  margin-top: 50px;
+  section {
+    // border-top: 1px solid #ccc;
+    .title {
+      margin-top: 20px;
+      width: 100%;
+      display: block;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      color: $dark_blue;
+
+    }
+
+    &#reviews {
+      .content {
+        margin-top: 20px;
+        background-image: url('../images/reviews_background_small.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        .reviews-container {
+          padding-top: 50px;
+          padding-bottom: 50px;
+          max-width: 480px;
+          margin: auto;
+          padding-left: 20px;
+          padding-right: 20px;
+          .review {
+            @include opacity(0);
+            @include transform(translateY(100px));
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 250px;
+            margin-bottom: 10px;
+            font-style: italic;
+            &.left {
+              float: left;
+              margin-right: auto;
+              p {
+                &:after {
+                  border-top: 8px solid $light_blue;
+                  border-left: 8px solid $light_blue;
+                  border-right: 8px solid transparent;
+
+                }
+              }
+            }
+            &.right {
+              // float: right;
+              margin-left: auto;
+              .username {
+                margin-left: auto;
+
+              }
+              p {
+                &:after {
+                  border-top: 8px solid $light_blue;
+                  border-right: 8px solid $light_blue;
+                  border-left: 8px solid transparent;
+                  @include transform(translate(210px, 10px));
+                }
+              }
+
+            }
+            &.fadeUp {
+              @include animation(fade-up .5s .5s forwards);
+            }
+            .username {
+              margin-right: 5px;
+              color: $dark_white;
+              // font-weight: bold;
+            }
+            .stars {
+              i {
+                color: rgb(255, 149, 0);
+              }
+
+            }
+            p {
+              font-size: .8em;
+              line-height: 1.3em;
+              margin-top: 5px;
+              background-color: $light_blue;
+              @include border-radius();
+              padding: 10px;
+              color: $white;
+              box-shadow: -3px 4px 10px 0px rgba(0, 0, 0, 0.2);
+              &::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                position: absolute;
+                border-bottom: 8px solid transparent;
+                @include transform(translateY(10px));
+              }
+            }
+          }
+
+        }
+      }
+    }
+    &#features {
+      margin: 25px auto;
+      max-width: 420px;
+      .content {
+        .features-container {
+          margin-right: 20px;
+          margin-left: 20px;
+          .feature {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            align-items: center;
+            .text-container {
+              text-align: center;
+              font-size: 1.5em;
+              color: $black;
+              p {
+                @include opacity(0);
+                @include transform(translateX(50px));
+              }
+            }
+            .screenshot-container {
+              img {
+                @include border-radius();
+                box-shadow: -3px 4px 5px 0px rgba(0, 0, 0, 0.2);
+                @include opacity(0);
+                @include transform(translateX(-50px));
+
+              }
+            }
+            &:nth-child(even) {
+              .screenshot-container {
+                img {
+                  @include transform(translateX(50px));
+                }
+              }
+            }
+            &.animate {
+              .text-container {
+                p {
+                  @include animation(fade-up .4s .8s forwards);
+                }
+              }
+              .screenshot-container {
+                img {
+                  @include animation(slide-in-side .7s .8s forwards)
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+    &#downloads {
+      .content {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+footer {
+  height: 60px;
+  width: 90%;
+  display: block;
+  margin: 100px auto 0px;
+  max-width: 1080px;
+  border-top: 1px solid #ccc;
+  p {
+    text-align: center;
+    color: $light_blue;
+  }
+}
+
 // social icons
 .social-icons {
   position: absolute;
+  @include opacity(0);
   bottom: -150px;
   left: calc(50% - (220px * .75 / 2));
   width: calc(220px * .75);
@@ -129,11 +326,11 @@ header {
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      border-radius: 100%;
+      @include border-radius(100%);
       box-shadow: -3px 4px 5px 0px rgba(0, 0, 0, 0.2);
-      transition: linear .2s;
+      @include transition(linear .2s);
       &:hover {
-        transform: scale(1.1);
+        @include transform(scale(1.1));
       }
       &.facebook {
       }
@@ -155,7 +352,7 @@ header {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    border-radius: 10px;
+    @include border-radius(10px);
     box-shadow: -3px 4px 5px 0px rgba(0, 0, 0, 0.2);
     margin: 5px;
     &.ios {
@@ -191,10 +388,71 @@ header {
 
 @media screen and (max-width: 750px) {
   header {
-    background-image: url('../images/mobile_background.png');
+    background-image: url('../images/mobile_background.jpg');
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100%;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 980px) {
+  main {
+    section {
+      &#reviews {
+        .content {
+          background-image: url('../images/reviews_background_med.jpg');
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  main {
+    section {
+      &#features {
+        margin: auto;
+        max-width: 750px;
+        .content {
+          .features-container {
+            .feature {
+              margin-bottom: 50px;
+              flex-direction: row;
+              .text-container {
+                font-size: 2.2em;
+                padding-left: 20px;
+                text-align: left;
+                p {
+
+                }
+              }
+              .screenshot-container {
+                flex-basis: 600px;
+                align-self: center;
+                img {
+                  display: block;
+                  margin: auto;
+                }
+
+              }
+              &:nth-child(even) {
+                flex-direction: row-reverse;
+                .text-container {
+                  padding-right: 20px;
+                }
+                .screenshot-container {
+                  img {
+                    @include transform(translateX(50px));
+                  }
+
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -241,7 +499,7 @@ header {
         .iphone-display {
           img {
             position: absolute;
-            opacity: 0;
+            @include opacity(0);
             top: calc(50% - 75vh);
             right: 5%;
             @include animation(slide-down .6s .8s forwards);
@@ -249,6 +507,40 @@ header {
         }
       }
 
+    }
+
+    main {
+      section {
+        .title {
+          font-size: 2.5em;
+        }
+
+        &#reviews {
+          .content {
+            width: 100%;
+            background-image: url('../images/reviews_background_large.jpg');
+            .reviews-container {
+              max-width: 740px;
+              .review {
+                width: 380px;
+
+                &.right {
+                  p {
+                    &:after {
+                      @include transform(translate(340px, 10px));
+                    }
+                  }
+                }
+
+              }
+            }
+          }
+        }
+        &#features {
+          max-width: 1080px;
+          margin-top: 50px;
+        }
+      }
     }
 
     // Download buttons
@@ -260,8 +552,7 @@ header {
       .button {
         width: calc(300px * .7);
         height: calc(85px * .7);
-        border-radius: 10px;
-        // margin: 5px;
+        @include border-radius(10px);
       }
     }
 
