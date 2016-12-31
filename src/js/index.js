@@ -1,8 +1,15 @@
 //include styles
 require('../scss/styles.scss');
+/************************************
+  Using Remodal Plugin for modal
+  http://vodkabears.github.io/remodal/
+***************************************/
+require('../../node_modules/remodal/dist/remodal.css');
+require('../../node_modules/remodal/dist/remodal-default-theme.css');
 
 //include jquery
 import $ from 'jquery';
+import remodal from 'remodal';
 
 //check if is in viewport
 function isInViewport(element) {
