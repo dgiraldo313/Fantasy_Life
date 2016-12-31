@@ -25,7 +25,8 @@ section,
 .review-container,
 .review,
 .feature-container,
-.feature {
+.feature,
+footer {
   display: flex;
 }
 
@@ -38,7 +39,7 @@ section,
 .review-container,
 .review,
 .feature-container,
-.feature
+.feature,
  {
   flex-direction: column;
 
@@ -52,6 +53,7 @@ header,
 
 body {
   margin: 0px;
+  overflow-x: hidden;
 }
 // Header
 
@@ -285,15 +287,35 @@ main {
   }
 }
 footer {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   height: 60px;
   width: 90%;
-  display: block;
   margin: 100px auto 0px;
   max-width: 1080px;
   border-top: 1px solid #ccc;
-  p {
+  p,
+  a {
     text-align: center;
     color: $light_blue;
+    margin: 0px;
+  }
+  p {
+    width: 100%;
+  }
+  a {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .footer-item {
+    margin: 5px 10px;
+    &:nth-child(1){
+      width: 100%;
+      margin-right: auto;
+    }
   }
 }
 
@@ -449,6 +471,14 @@ footer {
       }
     }
   }
+  footer {
+    .footer-item {
+      margin: 10px 5px;
+      &:nth-child(1){
+        width: auto;
+      }
+    }
+  }
 }
 
 // Bigger Screens
@@ -598,6 +628,37 @@ footer {
       .iphone-display {
         img {
           right: 10%;
+        }
+      }
+    }
+  }
+}
+
+// Remodal CSS
+.remodal {
+  max-height: 95vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  h1 {
+    color: $dark_blue;
+  }
+  h2 {
+    margin: 0px;
+  }
+  .content {
+    .level {
+      text-align: left;
+      &.first {
+        padding-left: 10px;
+        padding-bottom: 10px;
+      }
+      &.second {
+        padding-left: 10px;
+      }
+      &.third {
+        padding-left: 10px;
+        p {
+          margin: 0px;
         }
       }
     }

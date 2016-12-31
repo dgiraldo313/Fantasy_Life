@@ -18,6 +18,10 @@ module.exports = {
         loaders: ['style', 'css', 'sass'],
       },
       {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+      },
+      {
         test: /\.(png|jpg)$/,
         loader: 'url-loader',
       },
