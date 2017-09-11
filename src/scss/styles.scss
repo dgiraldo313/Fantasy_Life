@@ -72,10 +72,9 @@ header {
     #logo {
       width: calc(400px * .50);
       height: calc(110px * .50);
-      background-image: url('../images/fl_logo_mobile.png');
+      background-image: url('../images/fl_logo_mobile_v2.png');
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover;
     }
 
     .tagline {
@@ -97,18 +96,18 @@ header {
       width: calc(200px * .5);
       height: calc(60px * .5);
       line-height: calc(60px * .5);
-      border: 2px solid $dark_blue;
+      border: 2px solid $dark_red;
       @include border-radius();
-      color: $dark_blue;
+      color: $dark_red;
       text-decoration: none;
       text-align: center;
       font-size: 1em;
       @include animation(fade-in .7s 3s forwards);
       @include transition(ease-in .2s);
       &:hover {
-        background-color: $dark_blue;
+        background-color: $dark_red;
         color: $white;
-        border-color: $dark_blue;
+        border-color: $dark_red;
         box-shadow: -3px 4px 5px 0px rgba(0, 0, 0, 0.2);
       }
     }
@@ -131,7 +130,7 @@ main {
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
-      color: $dark_blue;
+      color: $dark_red;
 
     }
 
@@ -162,8 +161,8 @@ main {
               margin-right: auto;
               p {
                 &:after {
-                  border-top: 8px solid $light_blue;
-                  border-left: 8px solid $light_blue;
+                  border-top: 8px solid $light_red;
+                  border-left: 8px solid $light_red;
                   border-right: 8px solid transparent;
 
                 }
@@ -178,8 +177,8 @@ main {
               }
               p {
                 &:after {
-                  border-top: 8px solid $light_blue;
-                  border-right: 8px solid $light_blue;
+                  border-top: 8px solid $light_red;
+                  border-right: 8px solid $light_red;
                   border-left: 8px solid transparent;
                   @include transform(translate(210px, 10px));
                 }
@@ -204,7 +203,7 @@ main {
               letter-spacing: .1px;
               line-height: 1.3em;
               margin-top: 5px;
-              background-color: $light_blue;
+              background-color: $light_red;
               @include border-radius();
               padding: 10px;
               color: $white;
@@ -259,6 +258,11 @@ main {
                   @include transform(translateX(50px));
                 }
               }
+              .text-container {
+                p {
+                  @include transform(translateX(-50px));
+                }
+              }
             }
             &.animate {
               .text-container {
@@ -297,7 +301,7 @@ footer {
   p,
   a {
     text-align: center;
-    color: $light_blue;
+    color: $light_red;
     margin: 0px;
   }
   p {
@@ -497,14 +501,14 @@ footer {
         flex-basis: 65%;
         padding: 0px;
         #logo {
-          background-image: url('../images/fl_logo_desktop.png');
+          background-image: url('../images/fl_logo_desktop_v2.png');
           width: 400px;
           height: 110px;
         }
 
         .tagline {
           h1 {
-            // color: $light_blue;
+            // color: $light_red;
             font-size: 2.2em;
           }
         }
@@ -639,7 +643,7 @@ footer {
   overflow: scroll;
   overflow-x: hidden;
   h1 {
-    color: $dark_blue;
+    color: $dark_red;
   }
   h2 {
     margin: 0px;
