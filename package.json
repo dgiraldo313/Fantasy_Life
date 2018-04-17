@@ -1,10 +1,12 @@
+
 {
   "name": "fantasy_life",
   "version": "1.0.0",
   "description": "Landing page for Fantasy Life, the sports mobile app company!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "webpack --optimize-minimize --optimize-occurrence-order --optimize-dedupe"
   },
   "keywords": [
     "Mobile",
